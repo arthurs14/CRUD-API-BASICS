@@ -1,7 +1,4 @@
-import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
-
-const router = express.Router();
 
 let users = [
   {
@@ -18,13 +15,11 @@ let users = [
   }
 ];
 
-// gets users
-router.get('/', (req, res) => {
+export const getUsers = (req, res) => {
   res.send(users);
-});
+};
 
-// creates new user
-router.post('/', (req, res) => {
+export const createUser = (req, res) => {
   const user = req.body;
   
   const userWithId = { ...user, id: uuidv4() };
@@ -32,30 +27,27 @@ router.post('/', (req, res) => {
   users.push(userWithId);
 
   res.send(`User with the name ${userWithId.firstName} added to the databsae`);
-});
+};
 
-// gets user with id
-router.get('/:id', (req, res) => {
+export const getUserById = (req, res) => {
   const { id } = req.params;
 
   const foundUser = users.find(user => id === user.id);
 
   res.send(foundUser);
-});
+};
 
-// delete user with id
-router.delete('/:id', (req, res) => {
+export const deleteUser = (req, res) => {
   const { id } = req.params;
 
-  const existingUsers = users.filter(user => user.id !== id); 
+  let existingUsers = users.filter(user => user.id !== id); 
 
   users = [ ...existingUsers ];
 
   res.send(`User with id ${id} deleted from database.`);
-});
+};
 
-// update user data
-router.patch('/:id', (req, res) => {
+export const updateUser = (req, res) => {
   const { id } = req.params;
   const { firstName, lastName, age } = req.body;
 
@@ -66,6 +58,4 @@ router.patch('/:id', (req, res) => {
   if (age) updateUser.age = age;
 
   res.send(`User with the id ${id} has been updated!`);
-});
-
-export default router;
+};
