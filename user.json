@@ -1,5 +1,12 @@
-{
-  "firstName": "Jisoo",
-  "lastName": "Kim",
-  "age": 26
-}
+[
+  {
+    "firstName": "Jisoo",
+    "lastName": "Kim",
+    "age": 26
+  },
+  {
+    "firstName": "Jennie",
+    "lastName": "Kim",
+    "age": 25
+  }
+]
