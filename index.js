@@ -1,6 +1,7 @@
 import express from 'express';
 
-import usersRoutes from './routes/users.js';
+//import usersRoutes from './routes/users.js';
+import usersRoutes from './routes/userTransactions.js';
 
 const app = express();
 const PORT = 5000;
